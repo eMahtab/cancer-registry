@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title> Cancer Registry Project </title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" charset="utf-8">
+    <link rel="stylesheet" href="bower_components/bootstrap-additions/dist/bootstrap-additions.css"  charset="utf-8">
+    <!-- <link rel="stylesheet" href="bower_components/bootstrap-pincode-input/css/bootstrap-pincode-input.css" charset="utf-8"> -->
+    <style >
+ .radio-inline {
+margin-top: 0;
+margin-left: 0px !important;
+}
+
+.radio-inline{
+   width:20%
+}
+.arrow-down {
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+
+  border-top: 20px solid #000;
+}
+    </style>
+  </head>
+  <body ng-app="cancerRegistryApp">
+
+   <div class="container">
+     <h2 align="center">Cancer Registry Project</h2>
+     <h3 align="center"> Tata Memorial Centre, Mumbai</h3>
+     <h4 align="center"> Nargis Dutt Memorial Cancer Hospital, Barshi </h4>
+
+     <br/><br/><br/>
+
+    <div>
+     <form class="form-horizontal">
+
+       <div class="form-group">
+         <label style="text-align: left;" class ="control-label col-sm-3 ">Aadhar Number</label>
+          <div class="col-sm-6">
+           <input autofocus type="number" minlength="12" maxlength="12" class="form-control" id="exampleInputEmail1" placeholder="Aadhar">
+          </div>
+       </div>
+
+
+         <div class="form-group">
+           <label style="text-align: left;" class ="control-label col-sm-3">Source of registration</label>
+            <div class="col-sm-6">
+             <input  type="text" class="form-control" id="exampleInputEmail1" placeholder="Hospital / Private Nursing Home">
+            </div>
+             <div class="col-sm-offset-3 col-sm-6">
+                <br/><input  ng-model="formData.date_of_registration" type="text" class="form-control" bs-datepicker id="exampleInputEmail1" placeholder="Date of registration">
+             </div>
+         </div>
+
+         <div class="form-group">
+           <label style="text-align: left;" class ="control-label col-sm-3">Fullname of patient</label>
+            <div class="col-sm-6">
+             <input  ng-model="formData.patient_name" type="text" class="form-control" capitalize placeholder="Patient Name">
+            </div>
+         </div>
+
+         <div class="form-group">
+           <label style="text-align: left;" class ="control-label col-sm-3">Father name</label>
+            <div class="col-sm-6">
+             <input ng-model="formData.father_name" capitalize type="text" class="form-control" id="exampleInputEmail1" placeholder="Father Name">
+            </div>
+         </div>
+
+         <div class="form-group">
+           <label style="text-align: left;" class ="control-label col-sm-3">Mother name</label>
+            <div class="col-sm-6">
+             <input ng-model="formData.mother_name" capitalize type="text" class="form-control" id="exampleInputEmail1" placeholder="Mother Name">
+            </div>
+         </div>
+
+         <div class="form-group">
+           <label style="text-align: left;" class ="control-label col-sm-3">Spouse name</label>
+            <div class="col-sm-6">
+             <input ng-model="formData.spouse_name" capitalize type="text" class="form-control" id="exampleInputEmail1" placeholder="Spouse Name">
+            </div>
+         </div>
+
+
+
+         <div class="form-group">
+           <label style="text-align: left;" class ="control-label col-sm-3">Place of residence</label>
+            <div class="col-sm-6">
+             <input  type="text" class="form-control" id="exampleInputEmail1" placeholder="Full Postal address">
+            </div>
+            <br/><br/>
+            <div class="col-sm-offset-3 col-sm-6">
+             <input  type="text" class="form-control" id="exampleInputEmail1" placeholder="Pincode">
+            </div>
+         </div>
+
+         <div class="form-group">
+           <label style="text-align: left;" class ="control-label col-sm-3">Phone No.</label>
+            <div class="col-sm-6">
+             <input  type="text" class="form-control" id="exampleInputEmail1" placeholder="Primary">
+            </div>
+            <br/><br/>
+            <div class="col-sm-offset-3 col-sm-6">
+             <input  type="text" class="form-control" id="exampleInputEmail1" placeholder="Secondary">
+            </div>
+         </div>
+
+         <div class="form-group">
+           <label style="text-align: left;" class ="control-label col-sm-3">Place of birth</label>
+            <div class="col-sm-6">
+             <input  type="text" class="form-control" id="exampleInputEmail1" placeholder="Name of city/village">
+            </div>
+            <br/><br/>
+            <div class="col-sm-offset-3 col-sm-6">
+             <input  type="text" class="form-control" id="exampleInputEmail1" placeholder="Pincode">
+            </div>
+         </div>
+
+
+
+         <div class="form-group">
+           <label style="text-align: left;" class ="control-label col-sm-3">Duration of stay in village/tehsil</label>
+            <div class="col-sm-6">
+             <input  type="text" class="form-control" id="exampleInputEmail1" placeholder="Duration of stay in years">
+            </div>
+             <!--<div class="col-sm-offset-2 col-sm-1 arrow-down">
+               <p style="text-align:right">Back</p>
+             </div>
+           -->
+         </div>
+
+         <div class="form-group">
+           <label style="text-align: left;" class ="control-label col-sm-3">Age</label>
+            <div class="col-sm-6">
+             <input  type="text" class="form-control" id="exampleInputEmail1" placeholder="Age in years">
+            </div>
+         </div>
+
+         <div class="form-group">
+           <label style="text-align: left;" class ="control-label col-sm-3">Sex</label>
+            <div class="col-sm-6">
+              <label class="radio-inline"><input type="radio" ng-model="formData.sex" name="sex" value="Male">Male</label>
+              <label class="radio-inline"><input type="radio" ng-model="formData.sex" name="sex" value="Female">Female</label>
+              <label class="radio-inline"><input type="radio" ng-model="formData.sex" name="sex" value="Other">Other</label>
+            </div>
+            <div ng-show=" formData.sex =='Other' " class="col-sm-offset-3 col-sm-6">
+             <br/><input  type="text" class="form-control" id="exampleInputEmail1" placeholder="If other specify">
+            </div>
+         </div>
+
+         <div class="form-group">
+           <label style="text-align: left;" class ="control-label col-sm-3">Marital Status</label>
+            <div class="col-sm-6">
+              <label class="radio-inline"><input type="radio" ng-model="formData.marital_status" name="marital_status" value="Unmarried">Unmarried</label>
+              <label class="radio-inline"><input type="radio" ng-model="formData.marital_status" name="marital_status" value="Married">Married</label>
+              <label class="radio-inline"><input type="radio" ng-model="formData.marital_status" name="marital_status" value="Widowed">Widowed</label>
+              <label class="radio-inline"><input type="radio" ng-model="formData.marital_status" name="marital_status" value="Divorced">Divorced</label>
+              <label class="radio-inline"><input type="radio" ng-model="formData.marital_status" name="marital_status" value="Separated">Separated</label>
+              <label class="radio-inline"><input type="radio" ng-model="formData.marital_status" name="marital_status" value="Unknown">Unknown</label>
+              <label class="radio-inline"><input type="radio" ng-model="formData.marital_status" name="marital_status" value="Other">Other</label>
+            </div>
+            <div ng-show=" formData.marital_status =='Other' " class="col-sm-offset-3 col-sm-6">
+             <br/><input  type="text" class="form-control" id="exampleInputEmail1" placeholder="If other specify">
+            </div>
+         </div>
+
+         <div class="form-group">
+           <label style="text-align: left;" class ="control-label col-sm-3">Mother Tongue</label>
+            <div class="col-sm-8">
+              <label class="radio-inline"><input type="radio" ng-model="formData.mother_tongue" name="mother_tongue" value="Marathi">Marathi</label>
+              <label class="radio-inline"><input type="radio" ng-model="formData.mother_tongue" name="mother_tongue" value="Hindi">Hindi</label>
+              <label class="radio-inline"><input type="radio" ng-model="formData.mother_tongue" name="mother_tongue" value="Kannada">Kannada</label>
+              <label class="radio-inline"><input type="radio" ng-model="formData.mother_tongue" name="mother_tongue" value="Gujarati">Gujarati</label>
+              <label class="radio-inline"><input type="radio" ng-model="formData.mother_tongue" name="mother_tongue" value="Assamees">Assamees</label>
+              <label class="radio-inline"><input type="radio" ng-model="formData.mother_tongue" name="mother_tongue" value="Telugu">Telugu</label>
+              <label class="radio-inline"><input type="radio" ng-model="formData.mother_tongue" name="mother_tongue" value="Urdu">Urdu</label>
+              <label class="radio-inline"><input type="radio" ng-model="formData.mother_tongue" name="mother_tongue" value="Sindhi">Sindhi</label>
+              <label class="radio-inline"><input type="radio" ng-model="formData.mother_tongue" name="mother_tongue" value="Unknown">Unknown</label>
+              <label class="radio-inline"><input type="radio" ng-model="formData.mother_tongue" name="mother_tongue" value="Other">Other</label>
+            </div>
+            <div ng-show=" formData.mother_tongue =='Other' " class="col-sm-offset-3 col-sm-6">
+             <br/><input  type="text" class="form-control" id="exampleInputEmail1" placeholder="If other specify">
+            </div>
+         </div>
+
+         <div class="form-group">
+           <label style="text-align: left;" class ="control-label col-sm-3">Religion</label>
+            <div class="col-sm-8">
+              <label class="radio-inline"><input ng-model="formData.religion" type="radio" value="Hindu" name="religion">Hindu</label>
+              <label class="radio-inline"><input ng-model="formData.religion" type="radio" value="Muslim" name="religion">Muslim</label>
+              <label class="radio-inline"><input ng-model="formData.religion" type="radio" value="Christian" name="religion">Christian</label>
+              <label class="radio-inline"><input ng-model="formData.religion" type="radio" value="Sikh" name="religion">Sikh</label>
+              <label class="radio-inline"><input ng-model="formData.religion" type="radio" value="Jain" name="religion">Jain</label>
+              <label class="radio-inline"><input ng-model="formData.religion" type="radio" value="New Buddhist" name="religion">New Buddhist</label>
+              <label class="radio-inline"><input ng-model="formData.religion" type="radio" value="Parsi" name="religion">Parsi</label>
+              <label class="radio-inline"><input ng-model="formData.religion" type="radio" value="Unknown" name="religion">Unknown</label>
+              <label class="radio-inline"><input ng-model="formData.religion" type="radio" value="Other" name="religion">Other</label>
+            </div>
+            <div ng-show=" formData.religion =='Other' " class="col-sm-offset-3 col-sm-6">
+             <br/><input  type="text" class="form-control" id="exampleInputEmail1" placeholder="If other specify">
+            </div>
+         </div>
+
+         <div class="form-group">
+           <label style="text-align: left;" class ="control-label col-sm-3">Education</label>
+            <div class="col-sm-9">
+              <label class="radio-inline"><input ng-model="formData.education" type="radio" name="education" value="Illiterate">Illiterate</label>
+              <label class="radio-inline"><input ng-model="formData.education" type="radio" name="education" value="Literate">Literate</label>
+              <label class="radio-inline"><input ng-model="formData.education" type="radio" name="education" value="Primary">Primary</label>
+              <label class="radio-inline"><input ng-model="formData.education" type="radio" name="education" value="Middle">Middle</label>
+              <label class="radio-inline"><input ng-model="formData.education" type="radio" name="education" value="Secondary">Secondary</label>
+              <label class="radio-inline"><input ng-model="formData.education" type="radio" name="education" value="Technical after matric">Technical after matric</label>
+              <label class="radio-inline"><input ng-model="formData.education" type="radio" name="education" value="College and above">College and above</label>
+              <label class="radio-inline"><input ng-model="formData.education" type="radio" name="education" value="Unknown">Unknown</label>
+              <label class="radio-inline"><input ng-model="formData.education" type="radio" name="education" value="Other">Other</label>
+            </div>
+            <div ng-show=" formData.education =='Other' " class="col-sm-offset-3 col-sm-6">
+             <br/><input  type="text" class="form-control" id="exampleInputEmail1" placeholder="If other specify">
+            </div>
+         </div>
+
+         <div class="form-group">
+           <label style="text-align: left;" class ="control-label col-sm-3">Date of first diagnosis</label>
+            <div class="col-sm-6">
+             <input  ng-model="date_of_diagnosis" type="text" class="form-control" bs-datepicker id="exampleInputEmail1" placeholder="Date of first diagnosis">
+            </div>
+         </div>
+
+         <div class="form-group">
+           <label style="text-align: left;" class ="control-label col-sm-3">Method of diagnosis
+             ( Most Valid Basis )</label>
+            <div class="col-sm-9">
+              <label class="radio-inline"><input type="radio" name="method_of_diagnosis" ng-model="formData.method_of_diagnosis" value="Clinical Only">Clinical Only</label>
+              <label class="radio-inline"><input type="radio" name="method_of_diagnosis" ng-model="formData.method_of_diagnosis" value="X-Ray">X-Ray</label>
+              <label class="radio-inline"><input type="radio" name="method_of_diagnosis" ng-model="formData.method_of_diagnosis" value="Isotopes">Isotopes</label>
+              <label class="radio-inline"><input type="radio" name="method_of_diagnosis" ng-model="formData.method_of_diagnosis" value="Endoscopy">Endoscopy</label>
+              <label class="radio-inline"><input type="radio" name="method_of_diagnosis" ng-model="formData.method_of_diagnosis" value="Angiography">Angiography</label>
+              <label class="radio-inline"><input type="radio" name="method_of_diagnosis" ng-model="formData.method_of_diagnosis" value="Exploratory surgery of autopsy but without histology">Exploratory surgery of autopsy but without histology</label>
+              <label class="radio-inline"><input type="radio" name="method_of_diagnosis" ng-model="formData.method_of_diagnosis" value="Specific biochemical and or immunological test">Specific biochemical and or immunological test</label>
+              <label class="radio-inline"><input type="radio" name="method_of_diagnosis" ng-model="formData.method_of_diagnosis" value="Cytology">Cytology</label>
+              <label class="radio-inline"><input type="radio" name="method_of_diagnosis" ng-model="formData.method_of_diagnosis" value="Blood">Blood</label>
+              <label class="radio-inline"><input type="radio" name="method_of_diagnosis" ng-model="formData.method_of_diagnosis" value="Bone marrow">Bone marrow</label>
+              <label class="radio-inline"><input type="radio" name="method_of_diagnosis" ng-model="formData.method_of_diagnosis" value="Histology of primary site">Histology of primary site</label>
+              <label class="radio-inline"><input type="radio" name="method_of_diagnosis" ng-model="formData.method_of_diagnosis" value="Histology of metastasis">Histology of metastasis</label>
+              <label class="radio-inline"><input type="radio" name="method_of_diagnosis" ng-model="formData.method_of_diagnosis" value="Autopsy with concurrent or previous histology">Autopsy with concurrent or previous histology</label>
+              <label class="radio-inline"><input type="radio" name="method_of_diagnosis" ng-model="formData.method_of_diagnosis" value="Death only">Death only</label>
+              <label class="radio-inline"><input type="radio" name="method_of_diagnosis" ng-model="formData.method_of_diagnosis" value="Death relative's information">Death relative's information</label>
+              <label class="radio-inline"><input type="radio" name="method_of_diagnosis" ng-model="formData.method_of_diagnosis" value="Through death in later years">Through death in later years</label>
+              <label class="radio-inline"><input type="radio" name="method_of_diagnosis" ng-model="formData.method_of_diagnosis" value="Other">Other</label>
+              <label class="radio-inline"><input type="radio" name="method_of_diagnosis" ng-model="formData.method_of_diagnosis" value="Unknown">Unknown</label>
+            </div>
+            <div ng-show=" formData.method_of_diagnosis =='Other' " class="col-sm-offset-3 col-sm-6">
+             <br/><input  type="text" class="form-control" id="exampleInputEmail1" placeholder="If other specify">
+            </div>
+         </div>
+
+         <div class="form-group">
+           <label style="text-align: left;" class ="control-label col-sm-3">Primary site of tumour</label>
+            <div class="col-sm-6">
+             <input  type="text" class="form-control" id="exampleInputEmail1" placeholder="Primary site of tumour">
+            </div>
+         </div>
+
+         <div class="form-group">
+           <label style="text-align: left;" class ="control-label col-sm-3">Primary Histology</label>
+            <div class="col-sm-6">
+             <input  type="text" class="form-control" id="exampleInputEmail1" placeholder="Primary histology">
+            </div>
+         </div>
+
+         <div class="form-group">
+           <label style="text-align: left;" class ="control-label col-sm-3">Treatment prior to admission</label>
+            <div class="col-sm-9">
+              <label class="radio-inline"><input type="radio" ng-model="formData.prior_treatment" name="prior_treatment" value="Yes">Yes</label>
+              <label class="radio-inline"><input type="radio" ng-model="formData.prior_treatment" name="prior_treatment" value="No">No</label>
+              <label class="radio-inline"><input type="radio" ng-model="formData.prior_treatment" name="prior_treatment" value="Not known">Not known</label>
+            </div>
+         </div>
+
+         <div ng-show="formData.prior_treatment=='Yes'" class="form-group">
+           <label style="text-align: left;" class ="control-label col-sm-3">Type of treatment</label>
+            <div class="col-sm-9">
+              <label class="radio-inline"><input type="radio" ng-model="formData.treatment" name="treatment" value="Surgery">Surgery</label>
+              <label class="radio-inline"><input type="radio" ng-model="formData.treatment" name="treatment" value="Radiation">Radiation</label>
+              <label class="radio-inline"><input type="radio" ng-model="formData.treatment" name="treatment" value="Chemotherapy">Chemotherapy</label>
+              <label class="radio-inline"><input type="radio" ng-model="formData.treatment" name="treatment" value="S+R">S+R</label>
+              <label class="radio-inline"><input type="radio" ng-model="formData.treatment" name="treatment" value="S+C">S+C</label>
+              <label class="radio-inline"><input type="radio" ng-model="formData.treatment" name="treatment" value="R+C">R+C</label>
+              <label class="radio-inline"><input type="radio" ng-model="formData.treatment" name="treatment" value="S+R+C">S+R+C</label>
+              <label class="radio-inline"><input type="radio" ng-model="formData.treatment" name="treatment" value="Hormone Therapy">Hormone Therapy</label>
+              <label class="radio-inline"><input type="radio" ng-model="formData.treatment" name="treatment" value="S+H">S+H</label>
+              <label class="radio-inline"><input type="radio" ng-model="formData.treatment" name="treatment" value="R+H">R+H</label>
+              <label class="radio-inline"><input type="radio" ng-model="formData.treatment" name="treatment" value="C+H">C+H</label>
+              <label class="radio-inline"><input type="radio" ng-model="formData.treatment" name="treatment" value="S+R+H">S+R+H</label>
+              <label class="radio-inline"><input type="radio" ng-model="formData.treatment" name="treatment" value="S+C+H">S+C+H</label>
+              <label class="radio-inline"><input type="radio" ng-model="formData.treatment" name="treatment" value="R+C+H">R+C+H</label>
+              <label class="radio-inline"><input type="radio" ng-model="formData.treatment" name="treatment" value="S+R+C+H">S+R+C+H</label>
+              <label class="radio-inline"><input type="radio" ng-model="formData.treatment" name="treatment" value="Other">Other</label>
+              <label class="radio-inline"><input type="radio" ng-model="formData.treatment" name="treatment" value="Unknown">Unknown</label>
+            </div>
+            <div ng-show=" formData.treatment =='Other' " class="col-sm-offset-3 col-sm-6">
+             <br/><input  type="text" class="form-control" id="exampleInputEmail1" placeholder="If other specify">
+            </div>
+         </div>
+
+         <div class="form-group">
+           <label style="text-align: left;" class ="control-label col-sm-3">Treatment given within six months at reporting hospital</label>
+            <div class="col-sm-9">
+              <label class="radio-inline"><input type="radio" ng-model="formData.current_treatment" name="current_treatment" value="Surgery">Surgery</label>
+              <label class="radio-inline"><input type="radio" ng-model="formData.current_treatment" name="current_treatment" value="Radiation">Radiation</label>
+              <label class="radio-inline"><input type="radio" ng-model="formData.current_treatment" name="current_treatment" value="Chemotherapy">Chemotherapy</label>
+              <label class="radio-inline"><input type="radio" ng-model="formData.current_treatment" name="current_treatment" value="S+R">S+R</label>
+              <label class="radio-inline"><input type="radio" ng-model="formData.current_treatment" name="current_treatment" value="S+C">S+C</label>
+              <label class="radio-inline"><input type="radio" ng-model="formData.current_treatment" name="current_treatment" value="R+C">R+C</label>
+              <label class="radio-inline"><input type="radio" ng-model="formData.current_treatment" name="current_treatment" value="S+R+C">S+R+C</label>
+              <label class="radio-inline"><input type="radio" ng-model="formData.current_treatment" name="current_treatment" value="Hormone Therapy">Hormone Therapy</label>
+              <label class="radio-inline"><input type="radio" ng-model="formData.current_treatment" name="current_treatment" value="S+H">S+H</label>
+              <label class="radio-inline"><input type="radio" ng-model="formData.current_treatment" name="current_treatment" value="R+H">R+H</label>
+              <label class="radio-inline"><input type="radio" ng-model="formData.current_treatment" name="current_treatment" value="C+H">C+H</label>
+              <label class="radio-inline"><input type="radio" ng-model="formData.current_treatment" name="current_treatment" value="S+R+H">S+R+H</label>
+              <label class="radio-inline"><input type="radio" ng-model="formData.current_treatment" name="current_treatment" value="S+C+H">S+C+H</label>
+              <label class="radio-inline"><input type="radio" ng-model="formData.current_treatment" name="current_treatment" value="R+C+H">R+C+H</label>
+              <label class="radio-inline"><input type="radio" ng-model="formData.current_treatment" name="current_treatment" value="S+R+C+H">S+R+C+H</label>
+              <label class="radio-inline"><input type="radio" ng-model="formData.current_treatment" name="current_treatment" value="Referred elsewhere (NI)">Referred elsewhere (NI)</label>
+              <label class="radio-inline"><input type="radio" ng-model="formData.current_treatment" name="current_treatment" value="Surgery at TMH">Surgery at TMH</label>
+              <label class="radio-inline"><input type="radio" ng-model="formData.current_treatment" name="current_treatment" value="Radiation at TMH">Radiation at TMH</label>
+              <label class="radio-inline"><input type="radio" ng-model="formData.current_treatment" name="current_treatment" value="Chemotherapy at TMH">Chemotherapy at TMH</label>
+              <label class="radio-inline"><input type="radio" ng-model="formData.current_treatment" name="current_treatment" value="Combinations at TMH">Combinations at TMH</label>
+              <label class="radio-inline"><input type="radio" ng-model="formData.current_treatment" name="current_treatment" value="Other">Other</label>
+              <label class="radio-inline"><input type="radio" ng-model="formData.current_treatment" name="current_treatment" value="Unknown">Unknown</label>
+            </div>
+            <div ng-show=" formData.current_treatment =='Other' " class="col-sm-offset-3 col-sm-6">
+             <br/><input  type="text" class="form-control" id="exampleInputEmail1" placeholder="If other specify">
+            </div>
+         </div>
+
+            <br/>
+         <div class="form-group">
+            <div class="col-md-offset-5 col-md-4">
+           <button type="submit" class="btn btn-success btn-lg">Save</button>
+            </div>
+         </div>
+
+     </form>
+   </div>
+
+ </div>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-strap/dist/angular-strap.js"></script>
+    <script src="bower_components/angular-strap/dist/angular-strap.tpl.js" charset="utf-8"></script>
+    <script src="app.js" charset="utf-8"></script>
+    <!-- <script src="bower_components/bootstrap-pincode-input/js/bootstrap-pincode-input.js"></script> -->
+  </body>
+</html>
