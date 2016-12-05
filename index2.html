@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" charset="utf-8">
     <link rel="stylesheet" href="bower_components/bootstrap-additions/dist/bootstrap-additions.css"  charset="utf-8">
     <!-- <link rel="stylesheet" href="bower_components/bootstrap-pincode-input/css/bootstrap-pincode-input.css" charset="utf-8"> -->
+    <link rel="stylesheet" href="bower_components/ladda/dist/ladda-themeless.min.css"  charset="utf-8">
+    <link rel="stylesheet" href="bower_components/AngularJS-Toaster/toaster.min.css" charset="utf-8">
     <style >
  .radio-inline {
 margin-top: 0;
@@ -66,7 +68,7 @@ input[type=number]::-webkit-outer-spin-button {
   <body ng-app="cancerRegistryApp">
       <br/><br/>
 
-
+    <toaster-container></toaster-container>
 
 
    <div class="container">
@@ -131,21 +133,21 @@ input[type=number]::-webkit-outer-spin-button {
          <div class="form-group">
            <label style="text-align: left;" class ="control-label col-sm-3">Father name</label>
             <div class="col-sm-6">
-             <input ng-model="formData.father_name" capitalize type="text" class="form-control" id="exampleInputEmail1" placeholder="Father Name">
+             <input letter-only ng-model="formData.father_name" capitalize type="text" class="form-control" id="exampleInputEmail1" placeholder="Father Name">
             </div>
          </div>
 
          <div class="form-group">
            <label style="text-align: left;" class ="control-label col-sm-3">Mother name</label>
             <div class="col-sm-6">
-             <input ng-model="formData.mother_name" capitalize type="text" class="form-control" id="exampleInputEmail1" placeholder="Mother Name">
+             <input letter-only ng-model="formData.mother_name" capitalize type="text" class="form-control" id="exampleInputEmail1" placeholder="Mother Name">
             </div>
          </div>
 
          <div class="form-group">
            <label style="text-align: left;" class ="control-label col-sm-3">Spouse name</label>
             <div class="col-sm-6">
-             <input ng-model="formData.spouse_name" capitalize type="text" class="form-control" id="exampleInputEmail1" placeholder="Spouse Name">
+             <input letter-only ng-model="formData.spouse_name" capitalize type="text" class="form-control" id="exampleInputEmail1" placeholder="Spouse Name">
             </div>
          </div>
 
@@ -234,7 +236,7 @@ input[type=number]::-webkit-outer-spin-button {
          <div class="form-group">
            <label style="text-align: left;" class ="control-label col-sm-3">Place of birth</label>
             <div class="col-sm-6">
-             <input  type="text" ng-model="formData.place_of_birth" class="form-control" id="exampleInputEmail1" placeholder="Name of city/village">
+             <input letter-only type="text" ng-model="formData.place_of_birth" class="form-control" id="exampleInputEmail1" placeholder="Name of city/village">
             </div>
             <br/><br/>
             <label style="text-align: left;" class ="col-sm-offset-3 control-label col-sm-3">Pin code</label>
@@ -251,9 +253,9 @@ input[type=number]::-webkit-outer-spin-button {
 
 
          <div class="form-group">
-           <label style="text-align: left;" class ="control-label col-sm-3">Duration of stay in village/tehsil</label>
+           <label style="text-align: left;" class ="control-label col-sm-3">Duration of stay in village/tehsil (in years)</label>
             <div class="col-sm-6">
-             <input  type="text" ng-model="formData.duration_of_stay_in_village" class="form-control" id="exampleInputEmail1" placeholder="Duration of stay in years">
+             <input  number-only type="text" ng-model="formData.duration_of_stay_in_village" class="form-control" id="exampleInputEmail1" placeholder="Duration of stay in years">
             </div>
              <!--<div class="col-sm-offset-2 col-sm-1 arrow-down">
                <p style="text-align:right">Back</p>
@@ -286,7 +288,7 @@ input[type=number]::-webkit-outer-spin-button {
                 <p class="error" ng-cloak ng-message="required">*Required field</p>
            </div>
             <div ng-show=" formData.sex =='Other' " class="col-sm-6">
-             <br/><input  ng-model="formData.sex_other"  name="sex_other" type="text" class="form-control" id="exampleInputEmail1" placeholder="If other specify">
+             <br/><input letter-only ng-model="formData.sex_other"  name="sex_other" type="text" class="form-control" id="exampleInputEmail1" placeholder="If other specify">
             </div>
             <!--<pre>cancerForm.sex_other.$error = {{ cancerForm.sex_other.$error | json }}</pre>
             <div class="help-block" ng-messages="cancerForm.sex_other.$error" >
@@ -309,7 +311,7 @@ input[type=number]::-webkit-outer-spin-button {
                 <p class="error" ng-cloak ng-message="required">*Required field</p>
            </div>
             <div ng-show=" formData.marital_status =='Other' " class="col-sm-offset-3 col-sm-6">
-             <br/><input  ng-model="formData.marital_status_other" type="text" class="form-control" id="exampleInputEmail1" placeholder="If other specify">
+             <br/><input letter-only ng-model="formData.marital_status_other" type="text" class="form-control" id="exampleInputEmail1" placeholder="If other specify">
             </div>
          </div>
 
@@ -331,7 +333,7 @@ input[type=number]::-webkit-outer-spin-button {
                 <p class="error" ng-cloak ng-message="required">*Required field</p>
            </div>
             <div ng-show=" formData.mother_tongue =='Other' " class="col-sm-offset-3 col-sm-6">
-             <br/><input  ng-model="formData.mother_tongue_other" type="text" class="form-control" id="exampleInputEmail1" placeholder="If other specify">
+             <br/><input letter-only ng-model="formData.mother_tongue_other" type="text" class="form-control" id="exampleInputEmail1" placeholder="If other specify">
             </div>
          </div>
 
@@ -352,7 +354,7 @@ input[type=number]::-webkit-outer-spin-button {
                 <p class="error" ng-cloak ng-message="required">*Required field</p>
            </div>
             <div ng-show=" formData.religion =='Other' " class="col-sm-offset-3 col-sm-6">
-             <br/><input ng-model="formData.religion_other" type="text" class="form-control" id="exampleInputEmail1" placeholder="If other specify">
+             <br/><input letter-only ng-model="formData.religion_other" type="text" class="form-control" id="exampleInputEmail1" placeholder="If other specify">
             </div>
          </div>
 
@@ -418,14 +420,14 @@ input[type=number]::-webkit-outer-spin-button {
          <div class="form-group">
            <label style="text-align: left;" class ="control-label col-sm-3">Primary site of tumour</label>
             <div class="col-sm-6">
-             <input  type="text" ng-model="formData.primary_site_of_tumor" class="form-control" id="exampleInputEmail1" placeholder="Primary site of tumour">
+             <input letter-only type="text" ng-model="formData.primary_site_of_tumor" class="form-control" id="exampleInputEmail1" placeholder="Primary site of tumour">
             </div>
          </div>
 
          <div class="form-group">
            <label style="text-align: left;" class ="control-label col-sm-3">Primary Histology</label>
             <div class="col-sm-6">
-             <input ng-model="formData.primary_histology" type="text" class="form-control" id="exampleInputEmail1" placeholder="Primary histology">
+             <input letter-only ng-model="formData.primary_histology" type="text" class="form-control" id="exampleInputEmail1" placeholder="Primary histology">
             </div>
          </div>
 
@@ -460,7 +462,7 @@ input[type=number]::-webkit-outer-spin-button {
               <label class="radio-inline"><input type="radio" ng-model="formData.type_of_treatment" name="treatment" value="Unknown">Unknown</label>
             </div>
             <div ng-show=" formData.type_of_treatment =='Other' " class="col-sm-offset-3 col-sm-6">
-             <br/><input ng-model="formData.type_of_treatment_other" type="text" class="form-control" id="exampleInputEmail1" placeholder="If other specify">
+             <br/><input letter-only ng-model="formData.type_of_treatment_other" type="text" class="form-control" id="exampleInputEmail1" placeholder="If other specify">
             </div>
          </div>
 
@@ -491,15 +493,22 @@ input[type=number]::-webkit-outer-spin-button {
               <label class="radio-inline"><input type="radio" ng-model="formData.current_treatment" name="current_treatment" value="Unknown">Unknown</label>
             </div>
             <div ng-show=" formData.current_treatment =='Other' " class="col-sm-offset-3 col-sm-6">
-             <br/><input ng-model="formData.current_treatment_other" type="text" class="form-control" id="exampleInputEmail1" placeholder="If other specify">
+             <br/><input letter-only ng-model="formData.current_treatment_other" type="text" class="form-control" id="exampleInputEmail1" placeholder="If other specify">
             </div>
          </div>
 
             <br/>
          <div class="form-group">
             <div class="col-md-offset-5 col-md-4">
-              <button ng-disabled="cancerForm.$invalid" type="submit" class="btn btn-success btn-lg">Save</button>
-              <pre>cancerForm= {{ formData | json }}</pre>
+              <button ng-disabled="cancerForm.$invalid" type="submit"
+                      class="btn btn-success btn-lg"
+                      ladda="submitting_form"
+                      data-style="expand-right">
+                <span ng-show="!submitting_form">Save</span>
+                <span ng-show="submitting_form">Processing</span>
+
+              </button>
+             <!--  <pre>cancerForm= {{ formData | json }}</pre> -->
             </div>
          </div>
 
@@ -509,10 +518,15 @@ input[type=number]::-webkit-outer-spin-button {
  </div>
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.min.js" charset="utf-8"></script>
     <script src="bower_components/angular-messages/angular-messages.js" charset="utf-8"></script>
     <script src="bower_components/angular-strap/dist/angular-strap.js"></script>
     <script src="bower_components/angular-strap/dist/angular-strap.tpl.js" charset="utf-8"></script>
     <script src="app.js" charset="utf-8"></script>
+    <script src="bower_components/ladda/dist/spin.min.js" charset="utf-8"></script>
+    <script src="bower_components/ladda/dist/ladda.min.js" charset="utf-8"></script>
+    <script src="bower_components/angular-ladda/dist/angular-ladda.min.js" charset="utf-8"></script>
+    <script src="bower_components/AngularJS-Toaster/toaster.min.js"></script>
     <!-- <script src="bower_components/bootstrap-pincode-input/js/bootstrap-pincode-input.js"></script> -->
   </body>
 </html>

@@ -16,6 +16,19 @@ exports.add_patient=function(req,res){
                   var mother_name=req.body.mother_name;
                   var spouse_name=req.body.spouse_name;
                   var department=req.body.department;*/
-                  console.log(JSON.stringify(req.body));
+                  console.log(req.body);
+
+                  var patient = req.body;
+                  db.query('INSERT INTO patients SET ?', patient, function(err,result){
+                    if(err) {throw err;}
+                    else{
+                      console.log('Inserted successfully');
+                      //return res.status(201).send('Record added successfully');
+                      res.send(200);
+
+                    }
+
+                  });
+
 
               }
