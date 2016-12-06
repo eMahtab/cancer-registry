@@ -38,16 +38,15 @@ app.get('/',function(req,res){res.sendFile(__dirname+'/index.html');});
 
 app.post('/patient',routes.add_patient);
 
-app.use(function(req, res) {
+/*app.use(function(req, res) {
       res.status(400);
       res.render('404');
   });
+  */
 
-var port = process.env.PORT || 8080;
+//var port = process.env.PORT || 8080;
 
-
-
-//var port = process.env.PORT || 7000;
+var port = process.env.PORT || 7000;
 
 var server=app.listen(port,function(req,res){
     console.log("Catch the action at http://localhost:"+port);
