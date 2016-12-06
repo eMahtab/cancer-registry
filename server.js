@@ -28,16 +28,19 @@ var routes=require('./routes/patient.js');
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
-app.set('view engine','ejs');
-
-//app.use(express.static(__dirname + '/public'));
 
 
-//app.get('/',routes.home);
+app.use(express.static(__dirname+'/public' ));
+
+
+app.get('/',function(req,res){res.sendFile(__dirname+'/index.html');});
+//app.get('/',function(req,res){res.render('index');});
+
 app.post('/patient',routes.add_patient);
+
 app.use(function(req, res) {
       res.status(400);
-     res.render('404');
+      res.render('404');
   });
 
 var port = process.env.PORT || 8080;

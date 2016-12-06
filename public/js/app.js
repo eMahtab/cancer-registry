@@ -1,5 +1,5 @@
-var app=angular.module('cancerRegistryApp',['mgcrea.ngStrap','ngMessages',
-'angular-ladda','toaster','ngAnimate']);
+var app=angular.module('cancerRegistryApp',
+['mgcrea.ngStrap','ngMessages','angular-ladda','toaster','ngAnimate']);
 
 app.config(function($datepickerProvider) {
   angular.extend($datepickerProvider.defaults, {
