@@ -197,7 +197,7 @@ app.controller('formController',function($scope,$http,toaster,$window){
 
 
        console.log("Aadhar "+aadhar);
-       $http.post('http://localhost:8080/patient',request_body)
+       $http.post('http://68.169.59.208:7000/patient',request_body)
        .success(function(res){
               $scope.submitting_form=false;
               toaster.pop('success','Record added successfully');

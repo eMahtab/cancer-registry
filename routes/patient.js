@@ -18,7 +18,7 @@ exports.add_patient=function(req,res){
                   var department=req.body.department;*/
                   console.log(req.body);
 
-                  var patient = req.body;
+                  var patient = JSON.parse(req.body);
                   db.query('INSERT INTO patients SET ?', patient, function(err,result){
                     if(err) {throw err;}
                     else{
