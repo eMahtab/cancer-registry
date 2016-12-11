@@ -1,0 +1,17 @@
+html {
+  /*background-color:  #FFFACD !important;*/
+}
+
+body {
+  padding-top: 100px;
+  font-size: 16px;
+  background: transparent;
+}
+
+h1 {
+  font-weight: 400;
+  font-size: 40px;
+}
+.margin-base-vertical {
+  margin: 30px 0;
+}

@@ -1,50 +1,59 @@
-/*var db=require('./db/db.js');
-
-
-
-
-db.query('SELECT patient_name FROM patients',function(err, rows) {
-
-    console.log(rows[0].patient_name+"    "+rows[1].patient_name);
-}
-);
-
-
-var patient = { patient_name: 'Kmre' };
-db.query('INSERT INTO patients SET ?', patient, function(err,res){
-  if(err) throw err;
-
-  console.log('Last insert ID:', res.insertId);
-});*/
-
-var db=require('./db/db.js');
+var md5=require('md5');
 var express=require('express');
 var bodyParser=require('body-parser');
 var cors = require('cors');
-var app=express();
-
+var jwt = require('jsonwebtoken');
+var expressJwt = require('express-jwt');
+var db=require('./db/db.js');
 var routes=require('./routes/patient.js');
 
+var jwtSecret = 'fjkdlsajfoew239053/3uk';
+
+var app=express();
+
+app.set('view engine','ejs');
+app.use(express.static('public'));
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
+app.use(expressJwt({ secret: jwtSecret }).unless({ path: ['/','/login']}));
 
+app.get('/',function(req,res){res.sendFile('index.html');});
 
-app.use(express.static('public'));
+function authenticate(req, res, next) {
+  console.log("Login Body "+JSON.stringify(req.body));
+  var body = req.body;
+  if (!body.username || !body.password) {
+    res.status(400).end('Must provide username or password');
+  }
 
+  var encrypted_password=md5(req.body.password);
+  console.log("Encrypting Password "+encrypted_password);
+  db.query('SELECT * FROM users where username=? and password=?',[req.body.username,encrypted_password],function(err, rows) {
 
-app.get('/',function(req,res){res.sendFile(__dirname+'/index.html');});
-//app.get('/',function(req,res){res.render('index');});
+       if(rows.length==0){
+         console.log("User does not exist");
+         res.status(401).end('Username or password incorrect');
+       }else{
+          next();
+       }
+
+  });
+
+}
+
+app.post('/login', authenticate, function (req, res) {
+    console.log("Successfully authenticated");
+    var token = jwt.sign({
+      username: req.body.username
+    }, jwtSecret);
+    res.send({
+      token: token,
+      username: req.body.username
+    });
+});
 
 app.post('/patient',routes.add_patient);
-
-/*app.use(function(req, res) {
-      res.status(400);
-      res.render('404');
-  });
-  */
-
-//var port = process.env.PORT || 8080;
 
 var port = process.env.PORT || 7000;
 

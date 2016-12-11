@@ -1,0 +1,27 @@
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+display: none !important;
+}
+
+.radio-inline {
+margin-top: 0;
+margin-left: 0px !important;
+}
+
+.error{
+color:#A94442;
+}
+
+.required{
+font-size: 18px;
+color:#A94442;
+}
+
+.radio-inline{
+ width:20%
+}
