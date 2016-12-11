@@ -189,8 +189,6 @@ appControllers.controller('formController',function($scope,$http,toaster,$window
                ,
               function(error){   $scope.submitting_form=false; console.log("Error "+error);}
             );
-
-
      }
 
 });

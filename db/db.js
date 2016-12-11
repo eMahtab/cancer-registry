@@ -5,9 +5,9 @@ var db;
 function connectDatabase() {
     if (!db) {
         db = mysql.createConnection({
-          host: "localhost",
+          host: "your_host",
           user: "root",
-          password: "new1prog$",
+          password: "your_password",
           database:"cancer_registry"
         });
 
@@ -21,15 +21,5 @@ function connectDatabase() {
     }
     return db;
 }
-
-/*
-// First you need to create a connection to the db
-var con = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "new1prog$",
-  database:"cancer_registry"
-});
-*/
 
 module.exports = connectDatabase();
