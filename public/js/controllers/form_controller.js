@@ -179,14 +179,18 @@ appControllers.controller('formController',function($scope,$http,toaster,$window
        request_body.username=surveyor_name;
 
        console.log("Form CONSTANT.API_URL "+CONSTANT.API_URL);
+
        $http.post(CONSTANT.API_URL+'/patient',request_body,{headers:{'Content-Type': 'application/json'}})
-       .success(function(res){
-              $scope.submitting_form=false;
-              toaster.pop('success','Record added successfully');
-              setTimeout(function(){$window.location.reload()},3000) ;
-                             }
-              )
-       .error(function(res){   $scope.submitting_form=false; console.log("Error "+res);});
+        .then(function(res){
+               $scope.submitting_form=false;
+               toaster.pop('success','Record added successfully');
+               setTimeout(function(){$state.reload();},3000) ;
+                           }
+               ,
+              function(error){   $scope.submitting_form=false; console.log("Error "+error);}
+            );
+
+
      }
 
 });
