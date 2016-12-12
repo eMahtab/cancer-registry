@@ -16,6 +16,12 @@ appControllers.controller('formController',function($scope,$http,toaster,$window
        console.log("Form : "+JSON.stringify($scope.formData));
        console.log("Form is submitted");
 
+       var house_number;
+
+       if(undefined_or_empty($scope.formData.house_number)){
+         house_number=null;
+       }else{house_number=$scope.formData.house_number;}
+
        var aadhar;
        if(undefined_or_empty($scope.formData.aadhar_1) || undefined_or_empty($scope.formData.aadhar_2) ||
           undefined_or_empty($scope.formData.aadhar_3) || undefined_or_empty($scope.formData.aadhar_4) ||
@@ -140,6 +146,7 @@ appControllers.controller('formController',function($scope,$http,toaster,$window
        var current_treatment_other=undefined_or_empty($scope.formData.current_treatment_other)?null:$scope.formData.current_treatment_other;
 
        var request_body={};
+       request_body.house_number=house_number;
        request_body.aadhar=aadhar;request_body.source_of_registration=source_of_registration;
        request_body.date_of_registration=date_of_registration;
        request_body.patient_name=patient_name;

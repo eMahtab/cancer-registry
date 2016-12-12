@@ -5,9 +5,9 @@ var db;
 function connectDatabase() {
     if (!db) {
         db = mysql.createConnection({
-          host: "your_host",
+          host: "localhost",
           user: "root",
-          password: "your_password",
+          password: "new1prog$",
           database:"cancer_registry"
         });
 

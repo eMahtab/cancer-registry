@@ -9,6 +9,12 @@
   <br/><br/><br/>
  <div>
   <form name="cancerForm"  ng-submit="processForm()" class="form-horizontal" novalidate>
+    <div class="form-group">
+      <label style="text-align: left;" class ="control-label col-sm-3">House Number</label>
+       <div class="col-sm-6">
+        <input number-only ng-model="formData.house_number" type="text" class="form-control" placeholder="House Number">
+       </div>
+    </div>
 
     <div class="form-group">
       <label style="text-align: left;" class ="control-label col-sm-3 ">Aadhar Number (12 digit number)</label>
@@ -197,6 +203,9 @@
          <div class="col-sm-6">
           <input  ng-min="1" ng-max="110"  ng-model="formData.patient_age" required name="patient_age" type="number" class="form-control" id="exampleInputEmail1" placeholder="Age in years">
          </div>
+         <div class="help-block" ng-messages="cancerForm.patient_age.$error" >
+             <p class="error" ng-cloak ng-message="required">*Required field</p>
+        </div>
           <!--<pre>cancerForm.patient_age.$error = {{ cancerForm.patient_age.$error | json }}</pre>-->
          <div class="help-block" ng-messages="cancerForm.patient_age.$error" ng-if="cancerForm.patient_age.$touched">
              <p class="error" ng-cloak ng-message="required">Patient age is required</p>
