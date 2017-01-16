@@ -1,5 +1,6 @@
 # Barshi Cancer Registry Application
 
+![](https://raw.githubusercontent.com/eMahtab/cancer-registry/master/cancer-registry-application.png)
 
 #Development Setup
 
