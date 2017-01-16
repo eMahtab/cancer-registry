@@ -10,8 +10,10 @@ database connection details in db/db.js file
 #Running the application
 
 ```
+
   npm install
   npm start
+
 ```
 
 Go to localhost:7000 to access the application  
